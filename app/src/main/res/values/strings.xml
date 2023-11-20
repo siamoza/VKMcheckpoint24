@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">VKMcheckpoint24</string>
-    <string name="labelHeader">ВКМ. Входной контроль колёсной пары (2.0.0)</string>
+    <string name="txtHeader">ВКМ. Входной контроль колёсной пары (1.0.0)</string>
+    <string name="txtVKM1">ВКМ-1</string>
+    <string name="txtVKM2">ВКМ-2</string>
+    <string name="txtDepo">Депо</string>
+    <string name="hintBrigadier">Код бригадира</string>
+    <string name="numb">--</string>
+    <string name="buttonScan">Скан</string>
+    <string name="sonk">ss</string>
+    <string name="txtLabel">Бирка</string>
+    <string name="hint5minus">-----</string>
+    <string name="hint4minus">----</string>
+    <string name="headerFactory">Завод</string>
+    <string name="fake_load">fake load</string>
+    <string name="number">№</string>
 </resources>

@@ -3,27 +3,201 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/app_bgr"
     tools:context=".MainActivity">
-
-    <LinearLayout
+    <!-- основной макет -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_below="@id/background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:focusable="auto"
         android:orientation="vertical"
-        android:background="#9090ee"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:visibility="visible"/>
+        <!-- блок заголовка приложения -->
+        <TextView
+            app:layout_constraintTop_toTopOf="@id/background"
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txtHeader"
+            android:background="@color/app_title_bgr"/>
+        <!-- блок выбора участка и идентификации бригадира -->
+        <RelativeLayout
+            app:layout_constraintTop_toBottomOf="@id/title"
+            android:id="@+id/site_brig"
+            android:layout_below="@id/title"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@color/site_bgr"
+            android:orientation="horizontal">
+        <!-- блок радио с выбором участка -->
+            <RadioGroup
+                android:id="@+id/radio"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="bottom|center_horizontal"
+                >
+                <!-- радио ВКМ-1 -->
+                <RadioButton
+                    android:id="@+id/radioVKM1"
+                    android:text="@string/txtVKM1"
+                    style="@style/radioButtons" />
+                <!-- радио ВКМ-2 -->
+                <RadioButton
+                    android:id="@+id/radioVKM2"
+                    android:text="@string/txtVKM2"
+                    style="@style/radioButtons" />
+                <!-- радио Депо -->
+                <RadioButton
+                    android:id="@+id/radioDepo"
+                    android:text="@string/txtDepo"
+                    style="@style/radioButtons" />
+            </RadioGroup>
+            <!-- блок с кодом бригадира -->
+            <EditText
+                android:id="@+id/brigadier"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/radio"
+                android:focusableInTouchMode="true"
+                android:gravity="bottom|center_horizontal"
+                android:hint="@string/hintBrigadier"
+                android:importantForAutofill="no"
+                android:inputType="textCapCharacters"
+                android:paddingStart="5dp"
+                android:paddingTop="1dp"
+                android:paddingEnd="2dp"
+                android:textColor="@color/black"
+                android:textColorHint="#795548"
+                android:textSize="14sp" />
+        </RelativeLayout>
+        <!-- блок со сканером бирки -->
+        <RelativeLayout
+            app:layout_constraintTop_toBottomOf="@+id/site_brig"
+            android:id="@+id/scanner"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@color/black"
+            android:focusable="auto"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:visibility="visible">
+            <TextView
+                android:id="@+id/numb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/buttonScan"
+                android:layout_alignBottom="@id/buttonScan"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="false"
+                android:layout_marginStart="60dp"
+                android:gravity="center"
+                android:text="@string/numb"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:ignore="RelativeOverlap" />
+            <Button
+                android:id="@+id/buttonScan"
+                android:layout_width="120dp"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:text="@string/buttonScan"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                style="@style/Widget.AppCompat.Button.Small"/>
 
-    <TextView
+            <Button
+                android:id="@+id/buttonFakeLoad"
+                style="@style/Widget.AppCompat.Button.Small"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="2dp"
+                android:hint="@string/fake_load"
+                android:textColorHint="#C5E1A5"
+                tools:ignore="TextContrastCheck" />
+            <CheckBox
+                android:id="@+id/sonk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="5dp"
+                android:checked="false"
+                android:gravity="center|center_horizontal"
+                android:paddingBottom="3dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
+                android:text="@string/sonk"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:theme="@style/TextAppearance.AppCompat.Medium"
+                tools:ignore="RelativeOverlap" />
+        </RelativeLayout>
+    <!-- основной составной блок, параметры КП -->
+    <RelativeLayout
+        app:layout_constraintTop_toBottomOf="@id/scanner"
+        android:id="@+id/axis"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/labelHeader"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@android:color/white"
+        android:focusable="auto"
+        android:orientation="vertical"
+        android:visibility="visible">
+        <!-- заголовок бирки -->
+        <TextView
+            android:id="@+id/headerLabel"
+            android:text="@string/txtLabel"
+            style="@style/labels"/>
+        <EditText
+            android:id="@+id/label"
+            android:layout_width="64dp"
+            android:layout_toEndOf="@+id/headerLabel"
+            android:hint="@string/hint5minus"
+            android:inputType="number"
+            android:maxEms="5"
+            android:maxLength="5"
+            android:nextFocusDown="@id/factory"
+            style="@style/inputs"
+            tools:ignore="Autofill" />
+        <!-- заголовок завода -->
+        <TextView
+            android:id="@+id/headerFactory"
+            android:layout_toEndOf="@+id/label"
+            android:text="@string/headerFactory"
+            style="@style/labels" />
+        <!-- поле ввода завода -->
+        <EditText
+            android:id="@+id/factory"
+            android:layout_width="50dp"
+            android:layout_toEndOf="@+id/headerFactory"
+            android:hint="@string/hint4minus"
+            android:inputType="number"
+            android:maxEms="4"
+            android:maxLength="4"
+            android:nextFocusDown="@id/axisNumber"
+            style="@style/inputs"
+            tools:ignore="Autofill" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/axisNumber"
+            android:layout_toEndOf="@+id/factory"
+            android:text="@string/number"
+            style="@style/labels" />
+
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
