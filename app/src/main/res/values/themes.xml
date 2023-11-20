@@ -6,4 +6,37 @@
     </style>
 
     <style name="Theme.VKMcheckpoint24" parent="Base.Theme.VKMcheckpoint24" />
+
+
+    <style name="labels">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:textColor">@color/label</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="inputs">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:paddingEnd">2dp</item>
+        <item name="android:textColor">@color/input</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="radioButtons">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">14dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:checked">false</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 </resources>
