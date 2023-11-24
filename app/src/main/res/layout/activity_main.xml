@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/background"
@@ -11,12 +10,14 @@
     <!-- основной макет -->
     <RelativeLayout
         android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:focusable="auto"
         android:orientation="vertical"
-        android:visibility="visible"/>
+        android:padding="5dp"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints" />
     <!-- блок заголовка приложения -->
     <TextView
         android:id="@+id/title"
@@ -24,66 +25,47 @@
         android:layout_height="wrap_content"
         android:background="@color/app_title_bgr"
         android:text="@string/txtHeader"
-        android:textColor="#000000"
+        android:textColor="@color/black"
         app:layout_constraintTop_toTopOf="@id/background" />
-    <!-- блок выбора участка и идентификации бригадира -->
+    <!-- блок выбора участка -->
     <RelativeLayout
-        app:layout_constraintTop_toBottomOf="@id/title"
-        android:id="@+id/site_brig"
-        android:layout_below="@id/title"
+        android:id="@+id/site"
         android:layout_width="match_parent"
         android:layout_height="52dp"
+        android:layout_below="@id/title"
         android:background="@color/site_bgr"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        tools:ignore="TextSizeCheck">
         <!-- блок радио с выбором участка -->
         <RadioGroup
             android:id="@+id/radio"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
             android:gravity="bottom|center_horizontal"
-            >
+            android:orientation="horizontal"
+            tools:ignore="UselessParent">
             <!-- радио ВКМ-1 -->
             <RadioButton
                 android:id="@+id/radioVKM1"
                 style="@style/radioButtons"
-                android:minHeight="48dp"
                 android:text="@string/txtVKM1" />
             <!-- радио ВКМ-2 -->
             <RadioButton
                 android:id="@+id/radioVKM2"
                 style="@style/radioButtons"
-                android:minHeight="48dp"
                 android:text="@string/txtVKM2" />
             <!-- радио Депо -->
             <RadioButton
                 android:id="@+id/radioDepo"
                 style="@style/radioButtons"
-                android:minHeight="48dp"
                 android:text="@string/txtDepo" />
         </RadioGroup>
-        <!-- блок с кодом бригадира -->
-        <EditText
-            android:id="@+id/brigadier"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            android:layout_toEndOf="@id/radio"
-            android:focusableInTouchMode="true"
-            android:gravity="bottom|center_horizontal"
-            android:hint="@string/hintBrigadier"
-            android:importantForAutofill="no"
-            android:inputType="textCapCharacters"
-            android:paddingStart="5dp"
-            android:paddingTop="1dp"
-            android:paddingEnd="2dp"
-            android:textColor="@color/black"
-            android:textColorHint="#795548"
-            android:textSize="14sp" />
     </RelativeLayout>
     <!-- блок со сканером бирки -->
     <RelativeLayout
-        app:layout_constraintTop_toBottomOf="@+id/site_brig"
-        android:id="@+id/scanner"
+        android:id="@+id/scannerLayout"
+        app:layout_constraintTop_toBottomOf="@+id/site"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/black"
@@ -97,13 +79,15 @@
             android:id="@+id/numb"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/numb"
             android:gravity="center_vertical"
+            android:layout_alignParentStart="true"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:text="@string/hint"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold"
-            />
-
+            tools:ignore="RelativeOverlap" />
         <Button
             android:id="@+id/buttonScan"
             style="@style/Widget.AppCompat.Button.Small"
@@ -113,61 +97,265 @@
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
             android:text="@string/buttonScan"
-            android:textColor="#607D8B"
+            android:textColor="@color/black"
             android:textSize="24sp" />
-
-
     </RelativeLayout>
-    <!-- основной составной блок, параметры КП -->
+    <!-- блок для бирки (и вагона) -->
     <RelativeLayout
-        app:layout_constraintTop_toBottomOf="@id/scanner"
-        android:id="@+id/axis"
+        android:id="@+id/headerLabel"
+        app:layout_constraintTop_toBottomOf="@+id/scannerLayout"
+        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:focusable="auto"
-        android:orientation="vertical"
-        android:visibility="visible">
-        <!-- заголовок бирки -->
+        android:layout_centerVertical="true"
+        android:layout_height="56dp"
+        android:orientation="horizontal">
+        <!-- данные технологической бирки -->
         <TextView
-            android:id="@+id/headerLabel"
+            android:id="@+id/txtLabel"
+            style="@style/CTRL_labels"
+            android:layout_alignParentStart="true"
             android:text="@string/txtLabel"
-            style="@style/labels"/>
+            tools:ignore="TextSizeCheck" />
         <EditText
             android:id="@+id/label"
-            android:layout_width="64dp"
-            android:layout_toEndOf="@+id/headerLabel"
-            android:hint="@string/hint5minus"
+            style="@style/CTRL_inputs"
+            android:layout_toEndOf="@id/txtLabel"
+            android:autofillHints=""
             android:inputType="number"
             android:maxEms="5"
             android:maxLength="5"
-            android:nextFocusDown="@id/factory"
-            style="@style/inputs"
-            tools:ignore="Autofill" />
-        <!-- заголовок завода -->
+            android:nextFocusDown="@id/car"
+            tools:ignore="LabelFor,DuplicateSpeakableTextCheck" />
+        <!-- данные вагона, если выбрано Депо -->
         <TextView
-            android:id="@+id/headerFactory"
-            android:layout_toEndOf="@+id/label"
-            android:text="@string/headerFactory"
-            style="@style/labels" />
-        <!-- поле ввода завода -->
+            android:id="@+id/txtCar"
+            style="@style/CTRL_labels"
+            android:layout_toEndOf="@id/label"
+            android:text="@string/txtCar"
+            tools:ignore="TextSizeCheck" />
+        <EditText
+            android:id="@+id/car"
+            android:layout_toEndOf="@id/txtCar"
+            android:nextFocusDown="@id/factory"
+            android:layout_width="120dp"
+            android:inputType="number"
+            android:maxEms="8"
+            android:maxLength="8"
+            tools:ignore="LabelFor"
+            style="@style/CTRL_inputs"
+            android:autofillHints="" />
+    </RelativeLayout>
+    <!-- блок основных параметров колёсной пары -->
+    <RelativeLayout
+        android:id="@+id/headerKP"
+        app:layout_constraintTop_toBottomOf="@+id/headerLabel"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:paddingBottom="4dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txtFactory"
+            style="@style/CTRL_labels"
+            android:text="@string/txtFactory"
+            tools:ignore="TextSizeCheck" />
         <EditText
             android:id="@+id/factory"
-            android:layout_width="50dp"
-            android:layout_toEndOf="@+id/headerFactory"
-            android:hint="@string/hint4minus"
+            android:layout_toEndOf="@id/txtFactory"
+            android:nextFocusDown="@id/axis"
             android:inputType="number"
             android:maxEms="4"
             android:maxLength="4"
-            android:nextFocusDown="@id/axisNumber"
-            style="@style/inputs"
-            tools:ignore="Autofill" />
-
+            tools:ignore="LabelFor"
+            style="@style/CTRL_inputs"
+            android:autofillHints="" />
         <TextView
-            android:id="@+id/axisNumber"
-            android:layout_toEndOf="@+id/factory"
-            android:text="@string/number"
-            style="@style/labels" />
+            android:id="@+id/txtAxis"
+            style="@style/CTRL_labels"
+            android:layout_toEndOf="@id/factory"
+            android:text="@string/txtAxis"
+            tools:ignore="TextSizeCheck" />
+        <EditText
+            android:id="@+id/axis"
+            android:layout_toEndOf="@id/txtAxis"
+            android:nextFocusDown="@id/year"
+            android:layout_width="105dp"
+            android:inputType="number"
+            android:maxEms="6"
+            android:maxLength="6"
+            tools:ignore="LabelFor"
+            style="@style/CTRL_inputs"
+            android:autofillHints="" />
+        <TextView
+            android:id="@+id/txtYear"
+            android:text="@string/txtYear"
+            android:layout_toEndOf="@id/axis"
+            style="@style/CTRL_labels" />
+        <EditText
+            android:id="@+id/year"
+            style="@style/CTRL_inputs"
+            android:layout_width="40dp"
+            android:layout_toEndOf="@id/txtYear"
+            android:inputType="number"
+            android:maxEms="2"
+            android:maxLength="2"
+            android:nextFocusDown="@id/factory"
+            tools:ignore="TouchTargetSizeCheck,LabelFor"
+            android:autofillHints="" />
+    </RelativeLayout>
+    <!-- блок данных об изготовлении -->
+    <RelativeLayout
+        android:id="@+id/manData"
+        app:layout_constraintTop_toBottomOf="@+id/headerKP"
+        android:layout_width="match_parent"
+        android:paddingTop="4dp"
+        android:layout_height="52dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txtManDate"
+            style="@style/CTRL_labels2"
+            android:text="@string/txtManDate"
+            tools:ignore="TextSizeCheck" />
+        <EditText
+            android:id="@+id/manDate"
+            android:layout_toEndOf="@id/txtManDate"
+            android:nextFocusDown="@id/axis"
+            android:inputType="date"
+            android:maxEms="4"
+            android:maxLength="4"
+            tools:ignore="LabelFor"
+            style="@style/CTRL_inputs"
+            android:autofillHints="" />
+        <TextView
+            android:id="@+id/txtManFactory"
+            style="@style/CTRL_labels"
+            android:text="@string/txtPoint"
+            android:layout_toEndOf="@id/manDate"
+            tools:ignore="TextSizeCheck" />
+        <EditText
+            android:id="@+id/manFactory"
+            android:layout_toEndOf="@id/txtManFactory"
+            android:nextFocusDown="@id/axis"
+            android:inputType="number"
+            android:maxEms="4"
+            android:maxLength="4"
+            tools:ignore="LabelFor"
+            style="@style/CTRL_inputs"
+            android:autofillHints="" />
+    </RelativeLayout>
+    <!-- блок данных формирования -->
+    <RelativeLayout
+        android:id="@+id/formData"
+        app:layout_constraintTop_toBottomOf="@+id/manData"
+        android:layout_width="match_parent"
+        android:paddingTop="4dp"
+        android:layout_height="52dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txtCreateDate"
+            style="@style/CTRL_labels2"
+            android:text="@string/txtCreateDate"
+            tools:ignore="TextSizeCheck" />
+        <EditText
+            android:id="@+id/manCreateDate"
+            android:layout_toEndOf="@id/txtCreateDate"
+            android:nextFocusDown="@id/axis"
+            android:inputType="date"
+            android:maxEms="4"
+            android:maxLength="4"
+            tools:ignore="LabelFor"
+            style="@style/CTRL_inputs"
+            android:autofillHints="" />
+        <TextView
+            android:id="@+id/txtCreateFactory"
+            style="@style/CTRL_labels"
+            android:text="@string/txtPoint"
+            android:layout_toEndOf="@id/manCreateDate"
+            tools:ignore="TextSizeCheck" />
+        <EditText
+            android:id="@+id/createFactory"
+            android:layout_toEndOf="@id/txtCreateFactory"
+            android:nextFocusDown="@id/axis"
+            android:inputType="number"
+            android:maxEms="4"
+            android:maxLength="4"
+            tools:ignore="LabelFor"
+            style="@style/CTRL_inputs"
+            android:autofillHints="" />
+    </RelativeLayout>
+    <!-- блок данных ПО -->
+    <RelativeLayout
+        android:id="@+id/poData"
+        app:layout_constraintTop_toBottomOf="@+id/formData"
+        android:layout_width="match_parent"
+        android:paddingTop="4dp"
+        android:layout_height="52dp"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/txtPODate"
+            style="@style/CTRL_labels2"
+            android:text="@string/txtPODate"
+            tools:ignore="TextSizeCheck" />
+        <EditText
+            android:id="@+id/PODate"
+            android:layout_toEndOf="@id/txtPODate"
+            android:nextFocusDown="@id/axis"
+            android:inputType="date"
+            android:maxEms="4"
+            android:maxLength="4"
+            tools:ignore="LabelFor"
+            style="@style/CTRL_inputs"
+            android:autofillHints="" />
+        <TextView
+            android:id="@+id/txtPOFactory"
+            style="@style/CTRL_labels"
+            android:text="@string/txtPoint"
+            android:layout_toEndOf="@id/PODate"
+            tools:ignore="TextSizeCheck" />
+        <EditText
+            android:id="@+id/POFactory"
+            android:layout_toEndOf="@id/txtPOFactory"
+            android:nextFocusDown="@id/axis"
+            android:inputType="number"
+            android:maxEms="4"
+            android:maxLength="4"
+            tools:ignore="LabelFor"
+            style="@style/CTRL_inputs"
+            android:autofillHints="" />
 
+    </RelativeLayout>
+    <!-- радиогруппа типа оси -->
+    <RelativeLayout
+        android:id="@+id/axisType"
+        android:layout_width="match_parent"
+        android:paddingTop="4dp"
+        android:layout_height="52dp"
+        android:layout_below="@id/title"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/poData"
+        tools:ignore="TextSizeCheck">
+    <RadioGroup
+        android:id="@+id/radioAxis"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent" >
+        <!-- радио ось РУ1 -->
+        <RadioButton
+            android:id="@+id/radioRU1"
+            style="@style/radioButtons"
+            android:text="@string/txtRU1" />
+        <!-- радио ось РУ1-Ш -->
+        <RadioButton
+            android:id="@+id/radioRU1S"
+            style="@style/radioButtons"
+            android:text="@string/txtRU1S" />
+        <!-- радио ось РВ2-Ш -->
+        <RadioButton
+            android:id="@+id/radioRV2S"
+            style="@style/radioButtons"
+            android:text="@string/txtRV2S" />
+        </RadioGroup>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

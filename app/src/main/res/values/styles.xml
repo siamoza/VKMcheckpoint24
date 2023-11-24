@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- стили меток полей ввода для программы входного контроля (крупные) -->
+    <style name="CTRL_labels">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">48dp</item>
+
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textColor">@color/label</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!-- стили для других меток полей ввода, где даты (крупные) -->
+    <style name="CTRL_labels2">
+        <item name="android:layout_width">170dp</item>
+        <item name="android:layout_height">48dp</item>
+
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textColor">@color/label</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!-- стили полей ввода для программы входного контроля (крупные) -->
+    <style name="CTRL_inputs">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:textColor">@color/input</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:hint">@string/hint</item>
+    </style>
+    <!-- стили меток полей ввода -->
+    <style name="labels">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:background">@android:color/white</item>
+        <item name="android:paddingStart">10dp</item>
+        <item name="android:paddingEnd">10dp</item>
+        <item name="android:textColor">@color/label</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <!-- стили полей ввода -->
+    <style name="inputs">
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:paddingStart">2dp</item>
+        <item name="android:paddingEnd">2dp</item>
+        <item name="android:textColor">@color/input</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColorHint">@color/hint</item>
+    </style>
+    <!-- стили радио -->
+    <style name="radioButtons">
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">14dp</item>
+        <item name="android:layout_marginEnd">14dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:checked">false</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+
+</resources>

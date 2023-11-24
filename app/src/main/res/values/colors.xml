@@ -2,9 +2,11 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="white_gray">#e5e5e5</color>
     <color name="app_bgr">#c5d0e6</color>
     <color name="app_title_bgr">#C9ECA1</color>
     <color name="site_bgr">#ffdc7a</color>
     <color name="label">#122F61</color>
     <color name="input">#353535</color>
+    <color name="hint">#aaaaaa</color>
 </resources>
