@@ -59,7 +59,8 @@
             <RadioButton
                 android:id="@+id/radioDepo"
                 style="@style/radioButtons"
-                android:text="@string/txtDepo" />
+                android:text="@string/txtDepo"
+                tools:ignore="VisualLintBounds" />
         </RadioGroup>
     </RelativeLayout>
     <!-- блок со сканером бирки -->
@@ -90,14 +91,11 @@
             tools:ignore="RelativeOverlap" />
         <Button
             android:id="@+id/buttonScan"
-            style="@style/Widget.AppCompat.Button.Small"
             android:layout_width="120dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
             android:text="@string/buttonScan"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textSize="24sp" />
     </RelativeLayout>
     <!-- блок для бирки (и вагона) -->
@@ -125,7 +123,7 @@
             android:maxEms="5"
             android:maxLength="5"
             android:nextFocusDown="@id/car"
-            tools:ignore="LabelFor,DuplicateSpeakableTextCheck" />
+            tools:ignore="LabelFor,DuplicateSpeakableTextCheck,TextContrastCheck" />
         <!-- данные вагона, если выбрано Депо -->
         <TextView
             android:id="@+id/txtCar"
@@ -135,15 +133,15 @@
             tools:ignore="TextSizeCheck" />
         <EditText
             android:id="@+id/car"
-            android:layout_toEndOf="@id/txtCar"
-            android:nextFocusDown="@id/factory"
+            style="@style/CTRL_inputs"
             android:layout_width="120dp"
+            android:layout_toEndOf="@id/txtCar"
+            android:autofillHints=""
             android:inputType="number"
             android:maxEms="8"
             android:maxLength="8"
-            tools:ignore="LabelFor"
-            style="@style/CTRL_inputs"
-            android:autofillHints="" />
+            android:nextFocusDown="@id/factory"
+            tools:ignore="LabelFor,TextContrastCheck" />
     </RelativeLayout>
     <!-- блок основных параметров колёсной пары -->
     <RelativeLayout
@@ -161,14 +159,14 @@
             tools:ignore="TextSizeCheck" />
         <EditText
             android:id="@+id/factory"
+            style="@style/CTRL_inputs"
             android:layout_toEndOf="@id/txtFactory"
-            android:nextFocusDown="@id/axis"
+            android:autofillHints=""
             android:inputType="number"
             android:maxEms="4"
             android:maxLength="4"
-            tools:ignore="LabelFor"
-            style="@style/CTRL_inputs"
-            android:autofillHints="" />
+            android:nextFocusDown="@id/axis"
+            tools:ignore="LabelFor,TextContrastCheck" />
         <TextView
             android:id="@+id/txtAxis"
             style="@style/CTRL_labels"
@@ -177,15 +175,15 @@
             tools:ignore="TextSizeCheck" />
         <EditText
             android:id="@+id/axis"
-            android:layout_toEndOf="@id/txtAxis"
-            android:nextFocusDown="@id/year"
+            style="@style/CTRL_inputs"
             android:layout_width="105dp"
+            android:layout_toEndOf="@id/txtAxis"
+            android:autofillHints=""
             android:inputType="number"
             android:maxEms="6"
             android:maxLength="6"
-            tools:ignore="LabelFor"
-            style="@style/CTRL_inputs"
-            android:autofillHints="" />
+            android:nextFocusDown="@id/year"
+            tools:ignore="LabelFor,TextContrastCheck" />
         <TextView
             android:id="@+id/txtYear"
             android:text="@string/txtYear"
@@ -196,12 +194,12 @@
             style="@style/CTRL_inputs"
             android:layout_width="40dp"
             android:layout_toEndOf="@id/txtYear"
+            android:autofillHints=""
             android:inputType="number"
             android:maxEms="2"
             android:maxLength="2"
             android:nextFocusDown="@id/factory"
-            tools:ignore="TouchTargetSizeCheck,LabelFor"
-            android:autofillHints="" />
+            tools:ignore="TouchTargetSizeCheck,LabelFor,TextContrastCheck" />
     </RelativeLayout>
     <!-- блок данных об изготовлении -->
     <RelativeLayout
@@ -218,14 +216,14 @@
             tools:ignore="TextSizeCheck" />
         <EditText
             android:id="@+id/manDate"
+            style="@style/CTRL_inputs"
             android:layout_toEndOf="@id/txtManDate"
-            android:nextFocusDown="@id/axis"
+            android:autofillHints=""
             android:inputType="date"
             android:maxEms="4"
             android:maxLength="4"
-            tools:ignore="LabelFor"
-            style="@style/CTRL_inputs"
-            android:autofillHints="" />
+            android:nextFocusDown="@id/axis"
+            tools:ignore="LabelFor,TextContrastCheck" />
         <TextView
             android:id="@+id/txtManFactory"
             style="@style/CTRL_labels"
@@ -234,14 +232,14 @@
             tools:ignore="TextSizeCheck" />
         <EditText
             android:id="@+id/manFactory"
+            style="@style/CTRL_inputs"
             android:layout_toEndOf="@id/txtManFactory"
-            android:nextFocusDown="@id/axis"
+            android:autofillHints=""
             android:inputType="number"
             android:maxEms="4"
             android:maxLength="4"
-            tools:ignore="LabelFor"
-            style="@style/CTRL_inputs"
-            android:autofillHints="" />
+            android:nextFocusDown="@id/axis"
+            tools:ignore="LabelFor,TextContrastCheck" />
     </RelativeLayout>
     <!-- блок данных формирования -->
     <RelativeLayout
@@ -258,14 +256,14 @@
             tools:ignore="TextSizeCheck" />
         <EditText
             android:id="@+id/manCreateDate"
+            style="@style/CTRL_inputs"
             android:layout_toEndOf="@id/txtCreateDate"
-            android:nextFocusDown="@id/axis"
+            android:autofillHints=""
             android:inputType="date"
             android:maxEms="4"
             android:maxLength="4"
-            tools:ignore="LabelFor"
-            style="@style/CTRL_inputs"
-            android:autofillHints="" />
+            android:nextFocusDown="@id/axis"
+            tools:ignore="LabelFor,TextContrastCheck" />
         <TextView
             android:id="@+id/txtCreateFactory"
             style="@style/CTRL_labels"
@@ -274,14 +272,14 @@
             tools:ignore="TextSizeCheck" />
         <EditText
             android:id="@+id/createFactory"
+            style="@style/CTRL_inputs"
             android:layout_toEndOf="@id/txtCreateFactory"
-            android:nextFocusDown="@id/axis"
+            android:autofillHints=""
             android:inputType="number"
             android:maxEms="4"
             android:maxLength="4"
-            tools:ignore="LabelFor"
-            style="@style/CTRL_inputs"
-            android:autofillHints="" />
+            android:nextFocusDown="@id/axis"
+            tools:ignore="LabelFor,TextContrastCheck" />
     </RelativeLayout>
     <!-- блок данных ПО -->
     <RelativeLayout
@@ -289,6 +287,7 @@
         app:layout_constraintTop_toBottomOf="@+id/formData"
         android:layout_width="match_parent"
         android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         android:layout_height="52dp"
         android:orientation="horizontal">
         <TextView
@@ -296,33 +295,34 @@
             style="@style/CTRL_labels2"
             android:text="@string/txtPODate"
             tools:ignore="TextSizeCheck" />
+
         <EditText
             android:id="@+id/PODate"
+            style="@style/CTRL_inputs"
             android:layout_toEndOf="@id/txtPODate"
-            android:nextFocusDown="@id/axis"
+            android:autofillHints=""
             android:inputType="date"
             android:maxEms="4"
             android:maxLength="4"
-            tools:ignore="LabelFor"
-            style="@style/CTRL_inputs"
-            android:autofillHints="" />
+            android:nextFocusDown="@id/axis"
+            tools:ignore="LabelFor,TextContrastCheck,TouchTargetSizeCheck" />
         <TextView
             android:id="@+id/txtPOFactory"
             style="@style/CTRL_labels"
             android:text="@string/txtPoint"
             android:layout_toEndOf="@id/PODate"
             tools:ignore="TextSizeCheck" />
+
         <EditText
             android:id="@+id/POFactory"
+            style="@style/CTRL_inputs"
             android:layout_toEndOf="@id/txtPOFactory"
-            android:nextFocusDown="@id/axis"
+            android:autofillHints=""
             android:inputType="number"
             android:maxEms="4"
             android:maxLength="4"
-            tools:ignore="LabelFor"
-            style="@style/CTRL_inputs"
-            android:autofillHints="" />
-
+            android:nextFocusDown="@id/axis"
+            tools:ignore="LabelFor,TextContrastCheck,TouchTargetSizeCheck" />
     </RelativeLayout>
     <!-- радиогруппа типа оси -->
     <RelativeLayout
@@ -350,12 +350,56 @@
         <RadioButton
             android:id="@+id/radioRU1S"
             style="@style/radioButtons"
-            android:text="@string/txtRU1S" />
+            android:text="@string/txtRU1S"
+            tools:ignore="VisualLintBounds" />
         <!-- радио ось РВ2-Ш -->
         <RadioButton
             android:id="@+id/radioRV2S"
             style="@style/radioButtons"
-            android:text="@string/txtRV2S" />
+            android:text="@string/txtRV2S"
+            tools:ignore="VisualLintBounds" />
         </RadioGroup>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/axisType">
+        <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:focusable="auto"
+            android:gravity="end"
+            android:text="@string/buttonSend"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/logLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/send"
+        app:layout_constraintBottom_toTopOf="@id/statusLayout" >
+        <TextView
+            android:id="@+id/query"
+            android:text="@string/queue"
+            tools:ignore="TextSizeCheck"
+            style="@style/queue" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/statusLayout"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/white"
+        android:gravity="bottom|start"
+        app:layout_constraintBottom_toBottomOf="@id/background" >
+        <TextView
+            android:id="@+id/status"
+            android:text="@string/status"
+            tools:ignore="TextSizeCheck"
+            style="@style/status" />
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
